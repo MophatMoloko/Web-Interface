@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <h1>
+        Here are all the incidents logged:
+    </h1>
+
+    <div>
+        {% for incident in incidents%}
+        <div>
+            <div>
+                <a href="{% url 'incidents.detail' pk=incident.id %}"><h3>{{incident.title}}</h3></a>
+                {{incident.text|truncatechars:20}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

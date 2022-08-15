@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{incident.title}}</h1>
+    <p>{{incident.text}}</p>
+    <h3>File attachment: <p>{{incident.upload}}</p></h3>
+    <button><a href="{{incident.upload.file}}" download>Click to view</a></button>
+{% endblock %}
