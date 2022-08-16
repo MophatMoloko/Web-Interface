@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Incidents(models.Model):
@@ -6,3 +7,4 @@ class Incidents(models.Model):
     text = models.TextField()
     upload = models.FileField(upload_to='uploads/')
     created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="incidents")

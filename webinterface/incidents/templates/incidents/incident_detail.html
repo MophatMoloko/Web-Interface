@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div>
     <h1>{{incident.title}}</h1>
     <p>{{incident.text}}</p>
     <h3>File attachment: <p>{{incident.upload}}</p></h3>
-    <button><a href="{{incident.upload.file}}" download>Click to view</a></button>
+</div>
+<div>
+    <button><a href="" download>Click to view</a></button>
+    <button><a href="{% url 'incidents.update' pk=incident.id %}">Edit</a></button>
+    <button><a href="{% url 'incidents.delete' pk=incident.id %}">Delete</a></button>
+    <Button><a href="{% url 'incidents.list' %}">Back</a></Button> 
+</div>
+    
 {% endblock %}

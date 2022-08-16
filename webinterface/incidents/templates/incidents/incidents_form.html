@@ -1,8 +1,16 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<form action="{% url 'incidents.new' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+<form  method="POST" enctype="multipart/form-data"> {% csrf_token %}
     {{form}}
     <button type="submit">Submit</button>
 </form>
+
+{% if form.errors %}
+<div>
+    {{form.errors.title.as_text}}
+</div>
+{% endif %}
+<button><a href="{% url 'incidents.list' %}"> Cancel</a></button>
+
 {% endblock %}
