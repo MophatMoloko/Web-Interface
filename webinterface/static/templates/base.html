@@ -1,12 +1,60 @@
+{% load static %}
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href ="{% static 'styles/style.css' %}"/>
         <title>Convener Web Interface</title>
     </head>
 
     <body>
-        <div>
-            {% block content%}
-            {% endblock %}
+
+        <!--Nav Bar-->
+        <nav>
+            <!--Logo-->
+            <div class="logo">
+                <h3>Logo</h3>
+            </div>
+
+            <!--Nav Bar-->
+            {% if user.is_authenticated %}
+            <li class="logout">
+                <a href = "{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="login">
+                <a href = "{% url 'login' %}">Login</a>
+            </li>
+            {% endif %}
+        </nav>
+
+        <div class="wrapper">
+            <!--Sidebar-->
+            <div class="sidebar">
+                <aside>
+                    <div>
+                        <a href="{% url 'home' %}">Home</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'incidents.list' %}">View Requests</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'incidents.new' %}">Create New Request</a>
+                    </div>
+                    <div>
+                        <a>Risk Analysis</a>
+                    </div>
+                </aside>
+            </div>
+
+            <!--Block Content-->
+            <div class="content">
+                <main >
+                    <div>
+                        {% block content%}
+                        {% endblock %}
+                    </div>
+                </main>
+            </div>
         </div>
+        
     </body>
 </html>

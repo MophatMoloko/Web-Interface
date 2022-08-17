@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-<div>
-    <h1>{{incident.title}}</h1>
-    <p>{{incident.text}}</p>
-    <h3>File attachment: <p>{{incident.upload}}</p></h3>
-</div>
-<div>
-    <button><a href="" download>Click to view</a></button>
-    <button><a href="{% url 'incidents.update' pk=incident.id %}">Edit</a></button>
-    <button><a href="{% url 'incidents.delete' pk=incident.id %}">Delete</a></button>
-    <Button><a href="{% url 'incidents.list' %}">Back</a></Button> 
+
+<div class="detailView">
+    <div class="innerView">
+        <div>
+            <h1>{{incident.title}}</h1>
+            <p>{{incident.text}}</p>
+            <h3>File attachment: <p>{{incident.upload}}</p></h3>
+        </div>
+        <div>
+            <button><a href="" download>Click to view</a></button>
+            <button><a href="{% url 'incidents.update' pk=incident.id %}">Edit</a></button>
+            <button><a href="{% url 'incidents.delete' pk=incident.id %}">Delete</a></button>
+            <Button><a href="{% url 'incidents.list' %}">Back</a></Button> 
+        </div>
+    </div>
 </div>
     
 {% endblock %}

@@ -1,0 +1,141 @@
+.wrapper {
+    display: inline-flex;
+}
+
+.sidebar {
+    background-color: #2F4050;
+    width: 250px;
+    height: 600px;
+
+}
+
+.sidebar div {
+    width: 230px;
+    height: 30px;
+    padding: 10px;
+    text-align: center;
+}
+
+.sidebar div a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.sidebar div:hover {
+    cursor: pointer;
+    background-color: #293846;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    color: aliceblue;
+    background-color: #293846;
+    height: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: aliceblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+nav li {
+    list-style: none;
+}
+
+nav a:hover {
+    color: #293846;
+}
+
+nav li:hover {
+    cursor: pointer;
+    background-color: rgb(109, 175, 232);
+}
+
+.welcome {
+    margin: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+.main-list {
+    margin: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.main-list h1 {
+    text-align: center;
+}
+
+.list-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 60%;
+    margin: 20px;
+}
+
+.list-outer {
+    align-content: center;
+    background-color: #bfbfbf;
+    border:solid #293846;
+    margin: 10px;
+    padding: 5px;
+
+}
+
+.list-inner {
+    text-align: center;
+    margin: 10px;
+    padding: 5px;
+    height: 100px;
+    width: 400px;
+}
+
+.list-inner a{
+    text-decoration: none;
+}
+
+.detailView {
+    display: block;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    margin-top: 40px;
+    width: 600px;
+    height: 400px;
+    text-align: center;
+    background-color: #2F4050;
+    margin-left: 20%;
+    margin-right: 20%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.innerView {
+    width: 500px;
+    height: 300px;
+    top: 38%;
+    left: 25%;
+    position: absolute;
+    margin: -100px 0 0 -100px;
+    color: azure;
+    
+}
+
+.innerView button {
+    width: 100px;
+    height: 50px;
+}
+
+.innerView button a {
+    text-decoration: none;
+    font-size: small;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

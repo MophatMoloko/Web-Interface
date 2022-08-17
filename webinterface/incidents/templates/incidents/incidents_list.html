@@ -1,18 +1,22 @@
 {% extends 'base.html'%}
-
+{% load static %}
 {% block content %}
+<div class="main-list">
     <h1>
         Here are all the incidents logged:
     </h1>
 
-    <div>
+    <div class="list-content">
+
         {% for incident in incidents%}
-        <div>
-            <div>
+        <div class="list-outer">
+
+            <div class="list-inner">
                 <a href="{% url 'incidents.detail' pk=incident.id %}"><h3>{{incident.title}}</h3></a>
                 {{incident.text|truncatechars:20}}
             </div>
         </div>
         {% endfor %}
     </div>
+</div>
 {% endblock %}
