@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+#These are all the accepted URL's for the Incidents application
 urlpatterns = [
     path('incidents', views.IncidentsListView.as_view(), name="incidents.list"),
     path('incidents/<int:pk>', views.IncidentsDetailView.as_view(), name="incidents.detail"),

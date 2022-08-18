@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+#This is a class model of how our database is configured
+# that saves all the requred fields in the database
 class Incidents(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()

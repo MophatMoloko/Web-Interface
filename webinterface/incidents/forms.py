@@ -1,9 +1,9 @@
 from dataclasses import fields
 from socket import fromshare
-from tkinter import Widget
 from django import forms
 from .models import Incidents
 
+#Creates a form with all the required fields for the user to complete
 class IncidentsForm(forms.ModelForm):
     class Meta:
         model = Incidents

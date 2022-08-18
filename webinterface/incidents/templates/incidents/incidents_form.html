@@ -3,8 +3,14 @@
 
 {% block content %}
 
-<div class="form-div" style="background-color: #b6d3ef ; margin: 100px 100px 200px 250px;">
-    <form method="POST" enctype="multipart/form-data" style="width:400px ;"> {% csrf_token %}
+<div class="form-div" 
+style="background-color: #045d79 ;
+ color:aliceblue; 
+ margin: 100px 100px 200px 250px; 
+ padding: 10px;"
+ >
+
+    <form method="POST" enctype="multipart/form-data" style="width:400px ; padding: 10px;" > {% csrf_token %}
         {{form}}
         <button type="submit">Submit</button>
     </form>
