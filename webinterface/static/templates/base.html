@@ -30,18 +30,32 @@
             <!--Sidebar-->
             <div class="sidebar">
                 <aside>
+                    {% if user.is_superuser %}
                     <div>
                         <a href="{% url 'home' %}">Home</a>
                     </div>
                     <div>
                         <a href="{% url 'incidents.list' %}">View Requests</a>
                     </div>
-                    <div>
-                        <a href="{% url 'incidents.new' %}">Create New Request</a>
-                    </div>
+
                     <div>
                         <a>Risk Analysis</a>
                     </div>
+
+                    <!--Not See-->
+                    {% else %}
+                    <div>
+                        <a href="{% url 'home' %}">Home</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'incidents.list' %}">View Requests</a>
+                    </div>
+
+                    <div>
+                        <a href="{% url 'incidents.new' %}">Create New Request</a>
+                    </div>
+
+                    {% endif %}
                 </aside>
             </div>
 
