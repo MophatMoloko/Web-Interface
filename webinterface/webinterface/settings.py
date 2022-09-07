@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     #apps
     'home',
     'incidents',
+    'Tutor_Marking',
+    'import_export',
+    
+
 ]
 
 MIDDLEWARE = [

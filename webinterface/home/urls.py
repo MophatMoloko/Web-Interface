@@ -1,5 +1,4 @@
 from django.urls import path
-
 from . import views
 
 #All the accepted URL's in the Home application
