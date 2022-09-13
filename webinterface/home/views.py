@@ -4,6 +4,7 @@ from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import redirect_to_login
 
 today = datetime.today()
 
@@ -24,3 +25,7 @@ class HomeView(TemplateView):
 class AuthorizedView(LoginRequiredMixin, TemplateView):
     template_name = 'home/authorized.html'
     login_url = '/admin'
+
+#class RedirectToLoginView(redirect_to_login): 
+ #   template_name = 'home/login.html'
+    

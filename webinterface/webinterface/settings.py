@@ -38,12 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'import_export',
-
 
     #apps
     'home',
     'incidents',
+    'Tutor_Marking',
+    'import_export',
+    
+
     'studentResults',
 ]
 
@@ -63,7 +65,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'static/templates',
+            BASE_DIR / 'static/templates', 'Tutor_Marking/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
