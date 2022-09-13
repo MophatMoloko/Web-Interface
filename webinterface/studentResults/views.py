@@ -8,8 +8,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 def simple_upload(request):
-    success_url ='/home'
-    template_name = 'studentResults/templates/upload.html'
+
     if request.method == "POST":
         student_resource = StudentResource()
         dataset = Dataset()
