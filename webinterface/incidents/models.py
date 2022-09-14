@@ -9,3 +9,5 @@ class Incidents(models.Model):
     upload = models.FileField(upload_to='uploads/')
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="incidents")
+    query_type = models.CharField(max_length=2)
+    
