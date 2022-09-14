@@ -11,7 +11,6 @@ from django.views.generic import ListView, DetailView
 def simple_upload(request):
 
     if request.method == "POST":
-        student_resource = StudentResource()
         dataset = Dataset()
         new_student = request.FILES['myfile']
 
@@ -35,7 +34,7 @@ def simple_upload(request):
                             data[11],
                             )
             value.save()
-    return render(request, 'upload.html')
+    return render(request, 'studentResults/upload.html')
 
 class StudentResults(ListView):
     model = Student
