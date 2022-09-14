@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+<div class="main-list">
+    <h1>
+        Here are all the tutors logged:
+    </h1>
+
+    <div class="list-content">
+
+        {% for student in students%}
+        <div class="list-outer">
+            <table>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Assignment One</th>
+                    <th>Assignment Two</th>
+                    <th>Assignment Three</th>
+                    <th>Assignment Four</th>
+                    <th>Assignment Five</th>
+                    <th>Assignment Six</th>
+                </tr>
+                {% for student in students%}
+                <tr>
+                    <th>{{student.Student}}</th>
+                    <th>{{student.A1_Marker}}</th>
+                    <th>{{student.A2_Marker}}</th>  
+                    <th>{{student.A3_Marker}}</th>
+                    <th>{{student.A4_Marker}}</th>  
+                    <th>{{student.A5_Marker}}</th>  
+                    <th>{{student.A6_Marker}}</th>  
+                </tr>
+                {% endfor %}
+            </table>
+            
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
