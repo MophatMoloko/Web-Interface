@@ -4,13 +4,8 @@ from http.client import HTTPResponse
 from django.views.generic import ListView, DetailView
 from webinterface.settings import BASE_DIR
 from .models import Tutor_Marking
-from xlsx2html import xlsx2html 
 from tablib import Dataset
 from django.contrib import messages
-
-
-
-# Create your views here.
 
 #Gives a list of all the tutors for each assignment marked
 def simple_uploads(request):

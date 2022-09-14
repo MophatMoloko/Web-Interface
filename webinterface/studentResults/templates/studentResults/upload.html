@@ -10,10 +10,18 @@
 </div>
 {% endfor %}
 {% endif %}
-<form method="post" enctype="multipart/form-data"> {% csrf_token %}
-    <input type="file" name="myfile">
-    <button type="submit">Upload</button>
-    <h2>Please Upload Excel file</h2>
-</form>
+
+<div class="form-div"
+style="background-color: #045d79 ;
+color:aliceblue; 
+margin: 100px 100px 200px 250px; 
+padding: 10px;"
+>
+    <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+        <input type="file" name="myfile">
+        <button type="submit">Upload</button>
+        <h2>Please Upload Excel file</h2>
+    </form>
+</div>
 
 {% endblock %}
