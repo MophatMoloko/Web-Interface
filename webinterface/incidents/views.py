@@ -29,6 +29,7 @@ class IncidentsCreateView(LoginRequiredMixin, CreateView):
     success_url = '/smart/incidents'
     form_class = IncidentsForm
     login_url ="/admin"
+    #query_type = 
 
     #The function saves the items of the form first before sending to
     #backend database
