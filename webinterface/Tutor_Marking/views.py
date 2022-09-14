@@ -1,24 +1,32 @@
+
 from django.shortcuts import render
 from http.client import HTTPResponse
-from django.views.generic import TemplateView
-
+from django.views.generic import ListView, DetailView
 from webinterface.settings import BASE_DIR
 from .models import Tutor_Marking
-import os
+from xlsx2html import xlsx2html 
+
 
 
 # Create your views here.
 
 #Gives a list of all the tutors for each assignment marked
-#
-class ListTutorMarking(TemplateView):
+class ListTutorMarking(ListView):
     model = Tutor_Marking
-    template_name = os.path.join(BASE_DIR,"Tutor_Marking", "templates", "markers.html")
-    success_url= 'smart/Tutor_Marking'
+    context_object_name ="students"
+    template_name = 'Tutor_Marking/markers.html'
+
+    def get_queryset(self):
+        return Tutor_Marking.objects.all()
+
+class TutorsDetail(DetailView):
+    model = Tutor_Marking
+    context_object_name ="student"
+    template_name = 'Tutor_Marking/tutor_detail.html'
+
+
+
     
-    def show(request): 
-        queryset = Tutor_Marking.objects.all()
-        context = {'Marks_Table' : queryset}
-        return render(request,"Tutor_Markers", context)
-   
+    
+        
 

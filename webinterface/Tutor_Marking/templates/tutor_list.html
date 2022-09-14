@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+<div class="main-list">
+    <h1>
+        Here are all the tutors logged:
+    </h1>
+
+    <div class="list-content">
+
+        {% for student in students%}
+        <div class="list-outer">
+
+            <div class="list-inner">
+                <p>{{incident.title}}</p>
+                {{incident.text|truncatechars:20}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
