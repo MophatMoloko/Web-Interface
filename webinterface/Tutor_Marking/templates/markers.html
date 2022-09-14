@@ -5,20 +5,11 @@
 <div class="welcome">
     <h1>Welcome to the Tutor List </h1>
     <p>Please import the CSV Assigment Marker document</p>
+    <h3>Show a file-select field which allows only one file to be chosen:</h3>
+        <form>
+          <label for="myfile">Select a file:</label>
+          <input type="file" id="myfile" name="myfile"><br><br>
+          <input type="submit">
+        </form>
 </div>
-
-<table>
-    <thead>
-    {% for field in Marks_Table %}
-        <th>{{ field.label }}</th>
-    {% endfor %}
-    </thead>
-    <tbody>
-    <tr>
-        {% for field in clientes %}
-            <td>{{ field.value|default_if_none:'' }}</td>
-        {% endfor %}
-    </tr>
-    </tbody>
-</table>
 {% endblock %}
