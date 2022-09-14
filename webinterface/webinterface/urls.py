@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('smart/', include('incidents.urls')),
     path('smart/', include('Tutor_Marking.urls')),
+    path('people/',include('studentResults.urls')),
 ]
 
 if settings.DEBUG:

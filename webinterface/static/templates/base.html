@@ -39,11 +39,11 @@
                     </div>
 
                     <div>
-                        <a>Risk Analysis</a>
+                        <a href=" {% url 'results' %}">Risk Analysis</a>
                     </div>
 
                     <div>
-                        <a>Upload Student Results</a>
+                        <a href=" {% url 'upload' %} ">Upload Student Results</a>
                     </div>
 
                     <div>
@@ -65,7 +65,7 @@
 
                     <div>
                         <a href="{% url 'incidents.new' %}">Create New Request</a>
-                    </div>
+                    </div> <!--New Form here?-->
 
                     {% endif %}
                 </aside>

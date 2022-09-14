@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div>
+    <h1>Risk Analysis</h1>
+        <div >
+
+            <div>
+                <table>
+                    <tr>
+                        <th>Student Number</th>
+                        <th>Test Average</th>
+                        <th>Assignment Average</th>
+                        <th>Final Mark</th>
+                    </tr>
+                    {% for student in students%}
+                    <tr>
+                        <th>{{student.studentNumber}}</th>
+                        <th>{{student.testAverage}}</th>
+                        <th>{{student.assignmentAverage}}</th>  
+                        <th>{{student.finalMark}}</th>  
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        
+</div>
+
+{% endblock %}
