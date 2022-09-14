@@ -4,7 +4,8 @@ from .models import Student
 from .resources import StudentResource
 from django.contrib import messages
 from tablib import Dataset
-from django.http import HttpResponse
+from django.views.generic import ListView, DetailView
+
 
 # Create your views here.
 def simple_upload(request):
@@ -35,4 +36,16 @@ def simple_upload(request):
                             )
             value.save()
     return render(request, 'upload.html')
-            
+
+class StudentResults(ListView):
+    model = Student
+    context_object_name ="students"
+    template_name ='studentResults/results.html'
+
+    def get_queryset(self):
+        return Student.objects.all()
+
+class StudentsDetailView(DetailView):
+    model = Student
+    context_object_name= "student"
+    template_name = 'studentResults/detail_view.html'

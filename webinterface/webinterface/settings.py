@@ -38,14 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'viewtable',
 
     #apps
     'home',
     'incidents',
     'Tutor_Marking',
     'import_export',
-    
-
     'studentResults',
 ]
 
