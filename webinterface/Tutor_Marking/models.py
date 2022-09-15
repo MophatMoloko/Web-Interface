@@ -4,7 +4,7 @@ from django.db import models
 class Tutor_Marking(models.Model): #name of the table  
     
 
-    Student= models.CharField(max_length = 5, blank= True, null = True)
+    Student= models.CharField(max_length = 5, primary_key=True, default='no value')
 
    # tutors= (
     #    ('BNDJAM007','BNDJAM007'), ('TRMDON002','TRMDON002'), ('JHNBOR002','JHNBOR002'),
@@ -19,7 +19,4 @@ class Tutor_Marking(models.Model): #name of the table
     A4_Marker = models.CharField(max_length=15, blank= True, null = True)
     A5_Marker = models.CharField(max_length=15, blank= True, null = True)
     A6_Marker = models.CharField(max_length=15, blank= True, null = True)
-    
-    def __str__(self) -> str:
-        return str(self.id) 
     

@@ -6,10 +6,9 @@
     <h1>Welcome to the Tutor List </h1>
     <p>Please import the CSV Assigment Marker document</p>
     <h3>Show a file-select field which allows only one file to be chosen:</h3>
-        <form>
-          <label for="myfile">Select a file:</label>
-          <input type="file" id="myfile" name="myfile"><br><br>
-          <input type="submit">
-        </form>
+    <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+      <input type="file" name="myfile">
+      <button type="submit">Upload</button>
+  </form>
 </div>
 {% endblock %}
