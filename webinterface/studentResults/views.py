@@ -42,9 +42,11 @@ class StudentResults(ListView):
     template_name ='studentResults/results.html'
 
     def get_queryset(self):
-        return Student.objects.all()
+        order_list = ['assignmentAverage','testAverage']
+        return Student.objects.all().order_by(*order_list)
 
 class StudentsDetailView(DetailView):
     model = Student
     context_object_name= "student"
     template_name = 'studentResults/detail_view.html'
+
