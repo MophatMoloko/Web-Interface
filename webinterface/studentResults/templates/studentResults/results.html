@@ -17,44 +17,46 @@ style="margin-left:1%;
                 style="overflow-y:scroll;
                 height:400px;
                 display:block;
-                border: 1;
                 border-collapse: collapse;
                 width: 100%;
-                text-align: center;">
+                text-align: center;
+                border-style: solid;">
                 <tr style="position: sticky;
                     position: -webkit-sticky;
                     top: 0px;
                     z-index: 2;
                     background-color: #293846;
                     color: white;
-                    font-family: Arial, Helvetica, sans-serif;">
-                    <th>Student Number</th>
-                    <th >Assignment1</th>
-                    <th >Assignment1</th>
-                    <th >Assignment3</th>
-                    <th >Assignment4</th>
-                    <th >Assignment5</th>
-                    <th >Assignment6</th>
-                    <th >Assignment Average</th>
-                    <th >Test1</th>
-                    <th >Test2</th>
-                    <th >Test Average</th>
-                    <th >Final Mark</th>
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: small;
+                    border-style: solid;">
+                    <th style="border-style: solid;">Student Number</th>
+                    <th style="border-style: solid;">Assignment1</th>
+                    <th style="border-style: solid;">Assignment1</th>
+                    <th style="border-style: solid;">Assignment3</th>
+                    <th style="border-style: solid;">Assignment4</th>
+                    <th style="border-style: solid;">Assignment5</th>
+                    <th style="border-style: solid;">Assignment6</th>
+                    <th style="border-style: solid;">Assignment Average</th>
+                    <th style="border-style: solid;">Test1</th>
+                    <th style="border-style: solid;">Test2</th>
+                    <th style="border-style: solid;">Test Average</th>
+                    <th style="border-style: solid;">Final Mark</th>
                 </tr>
                 {% for student in students%}
                 <tr>
-                    <th>{{student.studentNumber}}</th>
-                    <th>{{student.assignmentOne}}</th>
-                    <th>{{student.assignmentTwo}}</th>
-                    <th>{{student.assignmentThree}}</th>
-                    <th>{{student.assignmentFour}}</th>
-                    <th>{{student.assignmentFive}}</th>
-                    <th>{{student.assignmentSix}}</th>
-                    <th>{{student.assignmentAverage}}</th> 
-                    <th>{{student.testOne}}</th>
-                    <th>{{student.testTwo}}</th>
-                    <th>{{student.testAverage}}</th> 
-                    <th>{{student.finalMark}}</th>  
+                    <th style="border-bottom: solid;">{{student.studentNumber}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentOne}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentTwo}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentThree}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentFour}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentFive}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentSix}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentAverage}}</th> 
+                    <th style="border-bottom: solid;">{{student.testOne}}</th>
+                    <th style="border-bottom: solid;">{{student.testTwo}}</th>
+                    <th style="border-bottom: solid;">{{student.testAverage}}</th> 
+                    <th style="border-bottom: solid;">{{student.finalMark}}</th>  
                 </tr>
                 {% endfor %}
             </table>

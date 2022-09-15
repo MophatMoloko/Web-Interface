@@ -1,4 +1,5 @@
 import imp
+from xml.dom.minidom import Document
 from django.shortcuts import render
 from .models import Student
 from .resources import StudentResource
@@ -37,7 +38,6 @@ def simple_upload(request):
 
         if new_student.name.endswith('xlsx'):
             return render(request,'studentResults/success.html')
-
     return render(request, 'studentResults/upload.html')
 
 class StudentResults(ListView):
@@ -54,3 +54,5 @@ class StudentsDetailView(DetailView):
     context_object_name= "student"
     template_name = 'studentResults/detail_view.html'
 
+
+    

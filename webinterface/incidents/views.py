@@ -54,9 +54,9 @@ class IncidentsListView(LoginRequiredMixin, ListView):
     #else, only show a request of the logged in user
     def get_queryset(self):
         if self.request.user.is_superuser:
-             Users = Incidents.objects.all()
+             Users = Incidents.objects.all().order_by('created')
         else:
-            Users = self.request.user.incidents.all()
+            Users = self.request.user.incidents.all().order_by('created')
         return Users
 
 #Creates a class to view only selected request
