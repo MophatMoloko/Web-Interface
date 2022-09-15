@@ -16,7 +16,7 @@ def simple_upload(request):
 
         if not new_student.name.endswith('xlsx'):
             messages.info(request, "Wrong format")
-            return render(request,'upload.html')
+            return render(request,'studentResults/upload.html')
 
         imported_data = dataset.load(new_student.read(),format='xlsx')
         for data in imported_data:
@@ -34,6 +34,10 @@ def simple_upload(request):
                             data[11],
                             )
             value.save()
+
+        if new_student.name.endswith('xlsx'):
+            return render(request,'studentResults/success.html')
+
     return render(request, 'studentResults/upload.html')
 
 class StudentResults(ListView):

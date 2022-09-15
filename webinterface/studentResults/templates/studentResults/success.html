@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="detailView">
+    <h3>The upload was successful!</h3>
+    <button><a href="{% url 'results' %}">See Risk Analysis</a></button>
+</div>
+
+{% endblock %}
