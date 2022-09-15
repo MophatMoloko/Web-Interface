@@ -9,7 +9,6 @@ from django.contrib import messages
 
 #Gives a list of all the tutors for each assignment marked
 def simple_uploads(request):
-
     if request.method == "POST":
         dataset = Dataset()
         new_student = request.FILES['myfile']
@@ -20,7 +19,8 @@ def simple_uploads(request):
 
         imported_data = dataset.load(new_student.read(),format='xlsx')
         for data in imported_data:
-            value = Tutor_Marking(data[0],
+            value = Tutor_Marking(
+                            data[0],
                             data[1],
                             data[2],
                             data[3],
@@ -43,7 +43,6 @@ class TutorsDetail(DetailView):
     model = Tutor_Marking
     context_object_name ="student"
     template_name = 'Tutor_Marking/tutor_detail.html'
-
 
 
     
