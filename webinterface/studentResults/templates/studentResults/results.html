@@ -2,7 +2,8 @@
 {% load static %}
 {% block content %}
 <div class="risk_block"
-style="margin-left:2% ;
+style="margin-left:1%;
+    display: flex;
     margin-right: 50%;
     width: 100%;
     text-align: center;
@@ -11,11 +12,14 @@ style="margin-left:2% ;
         <div class="risk">
             <h1>Risk Analysis</h1>
         </div>
-        <div class="table">
-            <table
+        <div>
+            <table 
                 style="overflow-y:scroll;
                 height:500px;
-                display:block;">
+                display:block;
+                border-collapse: collapse;
+                width: 100%;
+                text-align: center;">
                 <tr style="position: sticky;
                     position: -webkit-sticky;
                     top: 0px;
@@ -23,12 +27,12 @@ style="margin-left:2% ;
                     background-color: darkblue;
                     color: aliceblue;">
                     <th>Student Number</th>
-                    <th >A1</th>
-                    <th >A1</th>
-                    <th >A3</th>
-                    <th >A4</th>
-                    <th >A5</th>
-                    <th >A6</th>
+                    <th >Assignment1</th>
+                    <th >Assignment1</th>
+                    <th >Assignment3</th>
+                    <th >Assignment4</th>
+                    <th >Assignment5</th>
+                    <th >Assignment6</th>
                     <th >Assignment Average</th>
                     <th >Test1</th>
                     <th >Test2</th>
@@ -53,6 +57,12 @@ style="margin-left:2% ;
                 {% endfor %}
             </table>
         </div>
+    </div>
+    <div style="width: 200px;
+        height: 300px;
+        margin-top: 10%;
+        background-color: aqua;">
+        filter controls
     </div>
 </div>
 
