@@ -33,7 +33,7 @@ def simple_uploads(request):
 
 class ListTutorMarking(ListView):
     model = Tutor_Marking
-    context_object_name ="students"
+    context_object_name ="tutors"
     template_name = 'Tutor_Marking/tutor_marking_list'
 
     def get_queryset(self):
@@ -41,7 +41,7 @@ class ListTutorMarking(ListView):
 
 class TutorsDetail(DetailView):
     model = Tutor_Marking
-    context_object_name ="student"
+    context_object_name ="tutor"
     template_name = 'Tutor_Marking/tutor_detail.html'
 
 
