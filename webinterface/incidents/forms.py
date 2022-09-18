@@ -4,11 +4,11 @@ from django import forms
 from .models import Incidents
 from django.db import models
 
-QUERY_TYPE = (
-        ("MC", "Medical Certificate"),
-        ("CG", "Compassionate Grounds"),
-        ("W", "Waive"),
-    )
+#QUERY_TYPE = (
+#        ("MC", "Medical Certificate"),
+#        ("CG", "Compassionate Grounds"),
+#        ("W", "Waive"),
+#    )
 
 #Creates a form with all the required fields for the user to complete
 class IncidentsForm(forms.ModelForm):
@@ -18,9 +18,9 @@ class IncidentsForm(forms.ModelForm):
         fields = ('title', 'text', 'upload', 'query_type')
         labels = {
             'text': 'Write accompanying message for the request:',
-            'query_type': 'Select query type',
+            'query_type': 'Please select query category:',
         }
-        query_type = models.CharField(max_length=2, choices = QUERY_TYPE, default = "MC")
+        #query_type = models.CharField(max_length=2, choices = QUERY_TYPE, default = "MC")
     #class Catagory:
 
 
