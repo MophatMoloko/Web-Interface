@@ -7,6 +7,10 @@ from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.views.generic.edit import DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
+Sum = Incidents.objects.all().count()
+
+
 #Creates a class to delete requests made by a student
 #Takes in a generic view from Django framework
 class IncidentsDeleteView(DeleteView):
@@ -65,3 +69,15 @@ class IncidentsDetailView(DetailView):
     model = Incidents
     context_object_name= "incident"
     template_name = 'incidents/incident_detail.html'
+
+class IncidentsSummary(LoginRequiredMixin, ListView):
+    model = Incidents
+    context_object_name = "incidents"
+    template_name ='incidents/summary.html'
+    login_url = "/admin"
+
+    #This funtion tests if user is Convener to show all requests
+    #else, only show a request of the logged in user
+    def get_queryset(self):
+        return Incidents.objects.all()
+    
