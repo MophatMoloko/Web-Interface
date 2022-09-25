@@ -1,15 +1,19 @@
-
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="welcome">
-    <h1>Welcome to the Tutor List </h1>
-    <p>Please import the CSV Assigment Marker document</p>
-    <h3>Show a file-select field which allows only one file to be chosen:</h3>
-        <form>
-          <label for="myfile">Select a file:</label>
-          <input type="file" id="myfile" name="myfile"><br><br>
-          <input type="submit">
-        </form>
+
+{% if messages %}
+{% for message in messages %}
+
+<div class="alert alert - {{ message.alert }}" role="alert">
+    <p {% if message.tags %} class="" {% endif %}}>{{ message }}</p>
 </div>
+{% endfor %}
+{% endif %}
+<form method="post" enctype="multipart/form-data"> {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+    <h2>Please Upload Excel file</h2>
+</form>
+
 {% endblock %}
