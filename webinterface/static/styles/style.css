@@ -9,7 +9,6 @@
 }
 
 .sidebar {
-    background-color: #2F4050;
     width: 250px;
     height: 600px;
 
@@ -154,7 +153,6 @@ nav li:hover {
     color: #022f3c;
 }
 
-table, th, td {
-    border: 1px solid;
-    width: 100%;
-  }
+
+
+

@@ -9,16 +9,43 @@
     </h1>
 
     <div class="list-content">
+        <div>
+            <div>
+                <table 
+                style="overflow-y:scroll;
+                height:400px;
+                display:block;
+                border-collapse: collapse;
+                width: 800px;
+                text-align: center;">
+                <tr style="position: sticky;
+                    position: -webkit-sticky;
+                    top: 0px;
+                    z-index: 2;
+                    background-color: #293846;
+                    color: white;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: small;
+                    border-style: solid;">
+                    <th style="border-style: solid; width: 30%;">Title</th>
+                    <th style="border-style: solid; width: 30%">Contents</th>
+                    <th style="border-style: solid; width: 25%">Type</th>
+                    <th style="border-style: solid; width: 30%">Date</th>
 
-        {% for incident in incidents%}
-        <div class="list-outer">
-
-            <div class="list-inner">
-                <a href="{% url 'incidents.detail' pk=incident.id %}"><h3>{{incident.title}}</h3></a>
-                {{incident.text|truncatechars:20}}
+                </tr>
+                {% for incident in incidents%}
+                <tr>
+                    <th style="border-bottom: solid;"><a style="text-decoration: none;" href="{% url 'incidents.detail' pk=incident.id %}">{{incident.title}}</a></th>
+                    <th style="border-bottom: solid;">{{incident.text|truncatechars:20}}</th>
+                    <th style="border-bottom: solid;">{{incident.query_type}}</th>
+                    <th style="border-bottom: solid;">{{incident.created}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+                
+                
             </div>
         </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock %}

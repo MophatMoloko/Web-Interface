@@ -1,4 +1,5 @@
 import imp
+from xml.dom.minidom import Document
 from django.shortcuts import render
 from .models import Student
 from .resources import StudentResource
@@ -11,13 +12,12 @@ from django.views.generic import ListView, DetailView
 def simple_upload(request):
 
     if request.method == "POST":
-        student_resource = StudentResource()
         dataset = Dataset()
         new_student = request.FILES['myfile']
 
         if not new_student.name.endswith('xlsx'):
             messages.info(request, "Wrong format")
-            return render(request,'upload.html')
+            return render(request,'studentResults/upload.html')
 
         imported_data = dataset.load(new_student.read(),format='xlsx')
         for data in imported_data:
@@ -35,7 +35,10 @@ def simple_upload(request):
                             data[11],
                             )
             value.save()
-    return render(request, 'upload.html')
+
+        if new_student.name.endswith('xlsx'):
+            return render(request,'studentResults/success.html')
+    return render(request, 'studentResults/upload.html')
 
 class StudentResults(ListView):
     model = Student
@@ -43,9 +46,13 @@ class StudentResults(ListView):
     template_name ='studentResults/results.html'
 
     def get_queryset(self):
-        return Student.objects.all()
+        order_list = ['assignmentAverage','testAverage']
+        return Student.objects.all().order_by(*order_list)
 
 class StudentsDetailView(DetailView):
     model = Student
     context_object_name= "student"
     template_name = 'studentResults/detail_view.html'
+
+
+    

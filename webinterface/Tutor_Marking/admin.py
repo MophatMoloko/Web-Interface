@@ -1,14 +1,15 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
-from . import models 
+from .models import Tutor_Marking
 
 # Register your models here.
-
-class TutorMarkingAdmin(admin.ModelAdmin):
-    pass
-
+@admin.register(Tutor_Marking)
 class TutorMarkingAdmin(ImportExportModelAdmin):
-    pass
-
-admin.site.register(models.Tutor_Marking, TutorMarkingAdmin)
+    list_display = ('student',
+    'A1_Marker',
+    'A2_Marker', 
+    'A3_Marker',
+    'A4_Marker',
+    'A5_Marker',
+    'A6_Marker')
 

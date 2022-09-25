@@ -4,17 +4,11 @@ from http.client import HTTPResponse
 from django.views.generic import ListView, DetailView
 from webinterface.settings import BASE_DIR
 from .models import Tutor_Marking
-from xlsx2html import xlsx2html 
 from tablib import Dataset
 from django.contrib import messages
 
-
-
-# Create your views here.
-
 #Gives a list of all the tutors for each assignment marked
 def simple_uploads(request):
-
     if request.method == "POST":
         dataset = Dataset()
         new_student = request.FILES['myfile']
@@ -25,7 +19,8 @@ def simple_uploads(request):
 
         imported_data = dataset.load(new_student.read(),format='xlsx')
         for data in imported_data:
-            value = Tutor_Marking(data[0],
+            value = Tutor_Marking(
+                            data[0],
                             data[1],
                             data[2],
                             data[3],
@@ -38,7 +33,7 @@ def simple_uploads(request):
 
 class ListTutorMarking(ListView):
     model = Tutor_Marking
-    context_object_name ="students"
+    context_object_name ="tutors"
     template_name = 'Tutor_Marking/tutor_marking_list'
 
     def get_queryset(self):
@@ -46,9 +41,8 @@ class ListTutorMarking(ListView):
 
 class TutorsDetail(DetailView):
     model = Tutor_Marking
-    context_object_name ="student"
+    context_object_name ="tutor"
     template_name = 'Tutor_Marking/tutor_detail.html'
-
 
 
     

@@ -8,14 +8,20 @@
     <body>
 
         <!--Nav Bar-->
-        <nav>
+        <nav style="background-image: linear-gradient(266deg, rgba(47,64,80,1) 0%, rgba(47,64,80,1) 25%, rgba(7,39,107,1) 100%);">
             <!--Logo-->
             <div class="logo">
-                <img src="{% static "styles/graph.jpg" %}" width="50" >
+                <img src="{% static "styles/icon2.png" %}" width="60" >
             </div>
 
-            <!--Nav Bar-->
             {% if user.is_authenticated %}
+            <form action="" style="margin-top: 12px;">
+                <input type="text" placeholder="Search.." name="search" style="height: 40px ;
+                width: 300px">
+                <button type="submit">Search</i></button>
+            </form>
+
+            <!--Nav Bar-->
             <li class="logout">
                 <a href = "{% url 'logout' %}">Logout</a>
             </li>
@@ -26,9 +32,10 @@
             {% endif %}
         </nav>
 
+        {% if user.is_authenticated %}
         <div class="wrapper">
             <!--Sidebar-->
-            <div class="sidebar">
+            <div class="sidebar" style="background-image: linear-gradient(9deg, rgba(47,64,80,1) 0%, rgba(47,64,80,1) 51%, rgba(7,39,107,1) 100%);">
                 <aside>
                     {% if user.is_superuser %}
                     <div>
@@ -47,7 +54,7 @@
                     </div>
 
                     <div>
-                        <a>Summary Email</a>
+                        <a href="{% url 'summary.list' %}">Summary Email</a>
                     </div>
 
                     <div>
@@ -74,6 +81,9 @@
                     {% endif %}
                 </aside>
             </div>
+            {% else %}
+
+            {% endif %}
 
             <!--Block Content-->
             <div class="content">
