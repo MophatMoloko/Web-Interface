@@ -1,3 +1,4 @@
+import email
 from http.client import HTTPResponse
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
@@ -6,8 +7,13 @@ from .models import Incidents
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.views.generic.edit import DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+#html email stuff
+from django.core.mail import EmailMultiAlternatives
 from django.core.mail import send_mail
 from django.conf import settings
+from django.template.loaders import render_to_string
+from django.utils.html import strip_tags
 
 #Creates a class to delete requests made by a student
 #Takes in a generic view from Django framework
@@ -79,33 +85,33 @@ class IncidentsSummary(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Incidents.objects.all()
 
+#function to send email 
+def sendEmail(request):
 
-   
-def post(self, request):
-        form_class = EmailForm
-        form = self.form_class(request.POST)
+    to = request.POST.get('toemail')
+    content = request.POST.get('content')
 
-        if form.is_valid():
-           messageSent = False
+    if request.method =="POST":
+        html_content = render_to_string("incidents_list.html", )
+        text_content = strip_tags(html_content)
 
-    # check if form has been submitted
-        if request.method == 'POST':
-            form = EmailForm(request.POST)
+        email = EmailMultiAlternatives(
+            #Subject
+            "Testing",
+            #Content
+            text_content,
+            #from email
+            settings.EMAIL_HOST_USER,
+            # recipient list
+            [to]
+        )
 
-        # check if data from the form is clean
-        if form.is_valid():
-            cd = form.cleaned_data
-            subject = "Sending an email with Django"
-            message = "testing via view "
-
-            # send the email to the recipent
-            send_mail(subject, message,
-                      settings.EMAIL_HOST_USER, [cd['recipient']])
-
-            # set the variable initially created to True
-            messageSent = True
-
-        else:
-             form = EmailForm()
-
-        return render(request, self.template_name, {'form': form})
+        email.attach_alternative(html_content,"text/html")
+        email.send()
+        return render(
+            request,
+            'summary.html',
+            {
+                'title':'send an email'
+            }
+        )

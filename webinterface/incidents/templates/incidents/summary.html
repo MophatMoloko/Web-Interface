@@ -43,16 +43,30 @@
     </div>
 </div>
 
-<form method="post">
+<form action="{% url 'email' %}" method="post">
     {% csrf_token %} {{ form }}
-    <br />
-    <div class="text-center">
-      <input
-        type="submit"
-        class="btn btn-secondary"
-        style="width: 100%"
-        value="Send e-mail"
-      />
-    </div>
+   <table>
+      <tr>
+        <td>
+          TO
+        </td>
+        <td>
+          <input type="email" name="toemail">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <textarea name="content" cols="30" rows="10"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit" value="send">
+        </td>
+        <td>
+          <input type="reset" value="Clear">
+        </td>
+      </tr>
+   </table>
   </form>
 {% endblock %}
