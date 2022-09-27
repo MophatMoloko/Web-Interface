@@ -1,10 +1,11 @@
 from django.urls import path
 from . import views
+from .views import sendEmail
 
 #These are all the accepted URL's for the Incidents application
 urlpatterns = [
     path('incidents', views.IncidentsListView.as_view(), name="incidents.list"),
-    path('email', views.post, name="send"),
+    path('send/', sendEmail, name="email"),
     path('summary', views.IncidentsSummary.as_view(), name="summary.list"),
     path('incidents/<int:pk>', views.IncidentsDetailView.as_view(), name="incidents.detail"),
     path('incidents/<int:pk>/edit', views.IncidentsUpdateView.as_view(), name="incidents.update"),
