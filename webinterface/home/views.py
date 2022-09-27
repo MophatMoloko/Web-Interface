@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.views import redirect_to_login
 
+
 today = datetime.today()
 
 #Creates a class to logout users out of the webinterface
@@ -28,4 +29,3 @@ class AuthorizedView(LoginRequiredMixin, TemplateView):
 
 #class RedirectToLoginView(redirect_to_login): 
  #   template_name = 'home/login.html'
-    

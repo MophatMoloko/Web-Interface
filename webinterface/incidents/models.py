@@ -16,4 +16,6 @@ class Incidents(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="incidents")
     query_type = models.CharField(max_length=30, choices = QUERY_TYPE, default = 'MC')
-    
+
+def __str__(self):
+        return  self.title+'   '+ self.title + '   ' + self.text +'   ' + self.created + '   ' +self.query_type +'\n'

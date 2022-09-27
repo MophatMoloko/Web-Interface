@@ -111,7 +111,7 @@ def sendEmail(request):
 
         message = "HERE ARE ALL THE REQUESTS LOGGED: \nTotal number: " + str(Incidents.objects.all().count())+"\n"+"TITLE\n"
         for object in objects:
-            message = message + str(object.title) +"\n"
+            message = message + object.title +"\n"
 
 
         email = send_mail(
@@ -136,3 +136,19 @@ def sendEmail(request):
                 'title':'send an email'
             }
         )
+
+
+#class IncidentsSearch(LoginRequiredMixin, ListView):
+#    model = Incidents
+#    context_object_name = "incidents"
+#    template_name ='incidents/search.html'
+#    login_url = "/admin"
+
+    #This funtion tests if user is Convener to show all requests
+    #else, only show a request of the logged in user
+
+def searchString(request):
+        if request.method =="GET":
+            search_item = request.GET.get('search')
+            incidents = Incidents.objects.filter(title__contains=search_item).all()
+        return render(request, 'incidents/search.html', {'incidents': incidents})
