@@ -1,15 +1,12 @@
 {% extends 'base.html'%}
-
 {% load static %}
-
 {% block content %}
+
 <div class="main-list">
     <h1>
         Summary of all requests logged:
     </h1>
     <div class="list-content">
-        <div>
-            <p>Number of incidents logged {{Sum}} !</p>
             <div>
                 <table 
                 style="overflow-y:scroll;
@@ -42,9 +39,20 @@
                 </tr>
                 {% endfor %}
             </table>
-            <button type="button">Send Email</button>
             </div>
-        </div>
     </div>
 </div>
+
+<form method="post">
+    {% csrf_token %} {{ form }}
+    <br />
+    <div class="text-center">
+      <input
+        type="submit"
+        class="btn btn-secondary"
+        style="width: 100%"
+        value="Send e-mail"
+      />
+    </div>
+  </form>
 {% endblock %}

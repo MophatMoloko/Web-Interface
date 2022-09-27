@@ -22,14 +22,49 @@
             </form>
 
             <!--Nav Bar-->
-            <li class="logout">
-                <a href = "{% url 'logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li class="login">
-                <a href = "{% url 'login' %}">Login</a>
-            </li>
-            {% endif %}
+
+            <style>
+                .profile:hover {
+                    cursor: pointer;
+                    background-color: #045d79;
+                }
+
+                .profile_Login{
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .profile_div{
+                    display: flex;
+                    justify-content: space-around;
+                    height: 35px;
+                    padding: 10px;
+                }
+
+                .logout{
+                    margin-top: 15px;
+                    padding: 10px
+                }
+            </style>
+
+
+            <div class="profile_Login">
+                <div class="profile_div">
+                    <img src="{% static "styles/profile.png" %}"  class="profile" width="30"> 
+                    <p>{{user}}</p>
+                </div>
+
+                <li class="logout">
+                    <a href = "{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="login">
+                    <a href = "{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+            </div>
+
+
         </nav>
 
         {% if user.is_authenticated %}

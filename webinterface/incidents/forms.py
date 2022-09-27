@@ -29,3 +29,6 @@ class IncidentsForm(forms.ModelForm):
       #  if 'Convener' not in title:
        #     raise ValueError("We only accept incidents for the Converner")
         #return title
+
+class EmailForm(forms.Form):
+    recipient = forms.EmailField()

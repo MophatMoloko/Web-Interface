@@ -1,15 +1,13 @@
 from http.client import HTTPResponse
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
-from .forms import IncidentsForm
+from .forms import IncidentsForm, EmailForm
 from .models import Incidents
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.views.generic.edit import DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-
-
-Sum = Incidents.objects.all().count()
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 #Creates a class to delete requests made by a student
 #Takes in a generic view from Django framework
@@ -80,4 +78,34 @@ class IncidentsSummary(LoginRequiredMixin, ListView):
     #else, only show a request of the logged in user
     def get_queryset(self):
         return Incidents.objects.all()
-    
+
+
+   
+def post(self, request):
+        form_class = EmailForm
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+           messageSent = False
+
+    # check if form has been submitted
+        if request.method == 'POST':
+            form = EmailForm(request.POST)
+
+        # check if data from the form is clean
+        if form.is_valid():
+            cd = form.cleaned_data
+            subject = "Sending an email with Django"
+            message = "testing via view "
+
+            # send the email to the recipent
+            send_mail(subject, message,
+                      settings.EMAIL_HOST_USER, [cd['recipient']])
+
+            # set the variable initially created to True
+            messageSent = True
+
+        else:
+             form = EmailForm()
+
+        return render(request, self.template_name, {'form': form})
