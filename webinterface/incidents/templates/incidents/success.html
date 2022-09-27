@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .success{
+        background-color: rgb(109, 126, 135);
+        width: 400px;
+        height:200px;
+        margin: auto
+
+    }
+</style>
+<div class="success">
+    <h3>The email was sent successful!</h3>
+    <button><a href="{% url 'summary.list' %}">See Summary</a></button>
+</div>
+
+{% endblock %}

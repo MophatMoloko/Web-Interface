@@ -1,5 +1,8 @@
 import email
 from http.client import HTTPResponse
+import imp
+from pipes import Template
+from tempfile import tempdir
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from .forms import IncidentsForm, EmailForm
@@ -12,7 +15,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import EmailMultiAlternatives
 from django.core.mail import send_mail
 from django.conf import settings
-from django.template.loaders import render_to_string
+from django.template import Template, Context
+from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
 #Creates a class to delete requests made by a student
@@ -85,32 +89,49 @@ class IncidentsSummary(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Incidents.objects.all()
 
+
+
 #function to send email 
 def sendEmail(request):
 
     to = request.POST.get('toemail')
-    content = request.POST.get('content')
+    #content = request.POST.get('content')
+
+    template = Template("incidents/incidents_list.html")
+    context = {'title': Incidents.title, 'message': Incidents.text}
+
+    #content = template.render(Context(context))
 
     if request.method =="POST":
-        html_content = render_to_string("incidents_list.html", )
-        text_content = strip_tags(html_content)
+        html_content = render_to_string("incidents/incidents_list.html", {'title': Incidents.title, 'message': Incidents.text} )
+        #print(html_content)
+        #text_content = strip_tags(html_content)
 
-        email = EmailMultiAlternatives(
+        objects = Incidents.objects.all()
+
+        message = "HERE ARE ALL THE REQUESTS LOGGED: \nTotal number: " + str(Incidents.objects.all().count())+"\n"+"TITLE\n"
+        for object in objects:
+            message = message + str(object.title) +"\n"
+
+
+        email = send_mail(
             #Subject
             "Testing",
             #Content
-            text_content,
+            message,
             #from email
             settings.EMAIL_HOST_USER,
             # recipient list
-            [to]
+            [to],
         )
 
-        email.attach_alternative(html_content,"text/html")
-        email.send()
+        #email.attach_alternative(html_content,"text/html")
+        #email.send()
+
+
         return render(
             request,
-            'summary.html',
+            'incidents/success.html',
             {
                 'title':'send an email'
             }
