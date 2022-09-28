@@ -21,6 +21,10 @@ style="margin-left:1%;
                 tr {
                     font-family: sans-serif;
                 }
+
+                .below th{
+                    color: brown;
+                }
             </style>
             <table 
                 style="overflow-y:scroll;
@@ -52,7 +56,9 @@ style="margin-left:1%;
                     <th style="border-style: solid;">Final Mark</th>
                 </tr>
                 {% for student in students%}
-                <tr>
+
+                {% if student.testAverage <= 50 %}
+                <tr class="below">
                     <th style="border-bottom: solid;">{{student.studentNumber}}</th>
                     <th style="border-bottom: solid;">{{student.assignmentOne}}</th>
                     <th style="border-bottom: solid;">{{student.assignmentTwo}}</th>
@@ -66,6 +72,22 @@ style="margin-left:1%;
                     <th style="border-bottom: solid;">{{student.testAverage}}</th> 
                     <th style="border-bottom: solid;">{{student.finalMark}}</th>  
                 </tr>
+                {% else %}
+                <tr class ="above">
+                    <th style="border-bottom: solid;">{{student.studentNumber}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentOne}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentTwo}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentThree}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentFour}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentFive}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentSix}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentAverage}}</th> 
+                    <th style="border-bottom: solid;">{{student.testOne}}</th>
+                    <th style="border-bottom: solid;">{{student.testTwo}}</th>
+                    <th style="border-bottom: solid;">{{student.testAverage}}</th> 
+                    <th style="border-bottom: solid;">{{student.finalMark}}</th>  
+                </tr>
+                {% endif %}
                 {% endfor %}
             </table>
         </div>

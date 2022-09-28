@@ -13,6 +13,6 @@ class Student(models.Model):
     testOne = models.CharField(max_length=3, null=True, blank=True)
     testTwo = models.CharField(max_length=3, null=True, blank=True)
     finalMark = models.CharField(max_length=3, null=True, blank=True)
-    assignmentAverage = models.CharField(max_length=3, null=True, blank=True)
-    testAverage = models.CharField(max_length=3, null=True, blank=True)
+    assignmentAverage = models.IntegerField(max_length=3, null=True, blank=True)
+    testAverage = models.IntegerField(max_length=3, null=True, blank=True)
 

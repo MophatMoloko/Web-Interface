@@ -1,4 +1,5 @@
 import imp
+from turtle import color
 from xml.dom.minidom import Document
 from django.shortcuts import render
 from .models import Student
@@ -47,6 +48,8 @@ class StudentResults(ListView):
 
     def get_queryset(self):
         order_list = ['assignmentAverage','testAverage']
+
+
         return Student.objects.all().order_by(*order_list)
 
 class StudentsDetailView(DetailView):
