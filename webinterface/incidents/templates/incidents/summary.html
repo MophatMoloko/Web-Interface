@@ -6,6 +6,31 @@
     <h1>
         Summary of all requests logged:
     </h1>
+
+    <div class="summary">
+      <form action="{% url 'email' %}" method="post">
+        {% csrf_token %} {{ form }}
+       <table>
+          <tr>
+            <td>
+              TO EMAIL:
+            </td>
+            <td>
+              <input type="email" name="toemail">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="submit" value="send">
+            </td>
+            <td>
+              <input type="reset" value="Clear">
+            </td>
+          </tr>
+       </table>
+      </form>
+    </div>
+
     <div class="list-content">
             <div>
                 <table 
@@ -43,25 +68,4 @@
     </div>
 </div>
 
-<form action="{% url 'email' %}" method="post">
-    {% csrf_token %} {{ form }}
-   <table>
-      <tr>
-        <td>
-          TO
-        </td>
-        <td>
-          <input type="email" name="toemail">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="submit" value="send">
-        </td>
-        <td>
-          <input type="reset" value="Clear">
-        </td>
-      </tr>
-   </table>
-  </form>
 {% endblock %}
