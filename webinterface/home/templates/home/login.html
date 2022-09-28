@@ -5,7 +5,8 @@
 color:aliceblue; 
 width: 300px;
 margin: 100px 300px 300px 450px; 
-padding: 10px;">
+padding: 10px;
+border-radius: 25px;">
     <form method="POST" style="display: flex ;
     flex-direction: column" > {% csrf_token %}
         {{form.as_p}}

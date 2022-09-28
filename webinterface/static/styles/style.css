@@ -110,6 +110,7 @@ nav li:hover {
 }
 
 .detailView {
+    border-radius: 30px;
     display: block;
     justify-content: center;
     align-content: center;
