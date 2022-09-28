@@ -7,10 +7,24 @@
 
 <div class="alert alert - {{ message.alert }}" role="alert">
     <p {% if message.tags %} class="" {% endif %}}>{{ message }}</p>
+<<<<<<< HEAD
 </div>
 {% endfor %}
 {% endif %}
 
+=======
+<div class="welcome">
+    <h1>Welcome to the Tutor List </h1>
+    <p>Please import the CSV Assigment Marker document</p>
+    <h3>Show a file-select field which allows only one file to be chosen:</h3>
+    <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+      <input type="file" name="myfile">
+      <button type="submit">Upload</button>
+  </form>
+</div>
+{% endfor %}
+{% endif %}
+>>>>>>> 064b12b80521f78d683b4e182e3bc2e6572e2c21
 <div class="form-div"
 style="background-color: #045d79 ;
 color:aliceblue; 
