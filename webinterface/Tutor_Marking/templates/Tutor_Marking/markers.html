@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<<<<<<< HEAD
 
 {% if messages %}
 {% for message in messages %}
 
 <div class="alert alert - {{ message.alert }}" role="alert">
     <p {% if message.tags %} class="" {% endif %}}>{{ message }}</p>
-=======
 <div class="welcome">
     <h1>Welcome to the Tutor List </h1>
     <p>Please import the CSV Assigment Marker document</p>
@@ -17,14 +15,7 @@
       <input type="file" name="myfile">
       <button type="submit">Upload</button>
   </form>
->>>>>>> d662a2caece7e27240831231c4be89af14afa2e0
 </div>
 {% endfor %}
 {% endif %}
-<form method="post" enctype="multipart/form-data"> {% csrf_token %}
-    <input type="file" name="myfile">
-    <button type="submit">Upload</button>
-    <h2>Please Upload Excel file</h2>
-</form>
-
 {% endblock %}
