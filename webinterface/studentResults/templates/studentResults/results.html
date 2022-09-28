@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="risk_block"
+style="margin-left:1%;
+    display: flex;
+    margin-right: 50%;
+    width: 100%;
+    text-align: center;
+">
+    <div >
+        <div class="risk">
+            <h1 style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Risk Analysis</h1>
+        </div>
+        <div>
+            <style>
+                tr:nth-child(even) {
+                    background-color: rgb(215, 224, 243);
+                }
+
+                tr {
+                    font-family: sans-serif;
+                }
+
+                .below th{
+                    color: brown;
+                }
+            </style>
+            <table 
+                style="overflow-y:scroll;
+                height:400px;
+                display:block;
+                border-collapse: collapse;
+                width: 100%;
+                text-align: center;">
+                <tr style="position: sticky;
+                    position: -webkit-sticky;
+                    top: 0px;
+                    z-index: 2;
+                    background-color: rgba(7,39,107,1);
+                    color: white;
+                    font-family: sans-serif;
+                    font-size: small;
+                    border-style: solid;">
+                    <th style="border-style: solid;">Student Number</th>
+                    <th style="border-style: solid;">Assignment1</th>
+                    <th style="border-style: solid;">Assignment1</th>
+                    <th style="border-style: solid;">Assignment3</th>
+                    <th style="border-style: solid;">Assignment4</th>
+                    <th style="border-style: solid;">Assignment5</th>
+                    <th style="border-style: solid;">Assignment6</th>
+                    <th style="border-style: solid;">Assignment Average</th>
+                    <th style="border-style: solid;">Test1</th>
+                    <th style="border-style: solid;">Test2</th>
+                    <th style="border-style: solid;">Test Average</th>
+                    <th style="border-style: solid;">Final Mark</th>
+                </tr>
+                {% for student in students%}
+
+                {% if student.testAverage <= 50 %}
+                <tr class="below">
+                    <th style="border-bottom: solid;">{{student.studentNumber}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentOne}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentTwo}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentThree}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentFour}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentFive}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentSix}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentAverage}}</th> 
+                    <th style="border-bottom: solid;">{{student.testOne}}</th>
+                    <th style="border-bottom: solid;">{{student.testTwo}}</th>
+                    <th style="border-bottom: solid;">{{student.testAverage}}</th> 
+                    <th style="border-bottom: solid;">{{student.finalMark}}</th>  
+                </tr>
+                {% else %}
+                <tr class ="above">
+                    <th style="border-bottom: solid;">{{student.studentNumber}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentOne}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentTwo}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentThree}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentFour}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentFive}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentSix}}</th>
+                    <th style="border-bottom: solid;">{{student.assignmentAverage}}</th> 
+                    <th style="border-bottom: solid;">{{student.testOne}}</th>
+                    <th style="border-bottom: solid;">{{student.testTwo}}</th>
+                    <th style="border-bottom: solid;">{{student.testAverage}}</th> 
+                    <th style="border-bottom: solid;">{{student.finalMark}}</th>  
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

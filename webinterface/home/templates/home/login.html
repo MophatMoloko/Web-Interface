@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="POST" > {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit">
-</form>
+<div style="background-color: #045d79 ;
+color:aliceblue; 
+width: 300px;
+margin: 100px 300px 300px 450px; 
+padding: 10px;
+border-radius: 25px;">
+    <form method="POST" style="display: flex ;
+    flex-direction: column" > {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit">
+    </form>
+    <a href="">Forgot Password</a>
+    <a href="" >Sign Up</a>
+</div>
+
+
 {% endblock %}

@@ -1,9 +1,14 @@
+.welcome {
+    margin: 50px 120px 50px 120px ;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
 .wrapper {
     display: inline-flex;
 }
 
 .sidebar {
-    background-color: #2F4050;
     width: 250px;
     height: 600px;
 
@@ -57,12 +62,6 @@ nav li:hover {
     background-color: rgb(109, 175, 232);
 }
 
-.welcome {
-    margin: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
-}
-
 .main-list {
     margin: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -70,6 +69,7 @@ nav li:hover {
 
 .main-list h1 {
     text-align: center;
+    color: #022f3c;
 }
 
 .list-content {
@@ -84,11 +84,16 @@ nav li:hover {
 
 .list-outer {
     align-content: center;
-    background-color: #bfbfbf;
+    background-color: #045d79;
     border:solid #293846;
     margin: 10px;
     padding: 5px;
+    color: aliceblue;
 
+}
+
+.list-outer:hover {
+    background-color: #607a82;
 }
 
 .list-inner {
@@ -101,9 +106,11 @@ nav li:hover {
 
 .list-inner a{
     text-decoration: none;
+    color: aliceblue;
 }
 
 .detailView {
+    border-radius: 30px;
     display: block;
     justify-content: center;
     align-content: center;
@@ -112,7 +119,7 @@ nav li:hover {
     width: 600px;
     height: 400px;
     text-align: center;
-    background-color: #2F4050;
+    background-color: #045d79;
     margin-left: 20%;
     margin-right: 20%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -139,3 +146,14 @@ nav li:hover {
     font-size: small;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.logout-page {
+    margin: 150px 220px 100px 300px ;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    color: #022f3c;
+}
+
+
+
+

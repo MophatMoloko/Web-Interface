@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="welcome">
+    <h1>Search Results</h1>
+    
+    <table>
+        {% for incident in incidents%}
+        <tr>
+            <th style="border-bottom: solid;"><a style="text-decoration: none;" href="{% url 'incidents.detail' pk=incident.id %}">{{incident.title}}</a></th>
+            <th style="border-bottom: solid;">{{incident.text|truncatechars:20}}</th>
+            <th style="border-bottom: solid;">{{incident.query_type}}</th>
+            <th style="border-bottom: solid;">{{incident.created}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

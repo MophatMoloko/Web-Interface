@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+<div class="main-list">
+    <h1>
+        Here are all the tutors logged:
+    </h1>
+
+    <div >
+        <div>
+            <style>
+                tr:nth-child(even) {
+                    background-color: rgb(215, 224, 243);
+                }
+
+                tr {
+                    font-family: sans-serif;
+                }
+            </style>
+            <table  style="overflow-y:scroll;
+            height:400px;
+            display:block;
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;">
+                <tr style="position: sticky;
+                position: -webkit-sticky;
+                top: 0px;
+                z-index: 2;
+                background-color: rgba(7,39,107,1);
+                color: white;
+                font-family: sans-serif;
+                font-size: medium;">
+                    <th>Student ID</th>
+                    <th>Assignment One</th>
+                    <th>Assignment Two</th>
+                    <th>Assignment Three</th>
+                    <th>Assignment Four</th>
+                    <th>Assignment Five</th>
+                    <th>Assignment Six</th>
+                </tr>
+                {% for tutor in tutors %}
+                <tr>
+                    <th>{{tutor.student}}</th>
+                    <th>{{tutor.A1_Marker}}</th>
+                    <th>{{tutor.A2_Marker}}</th>  
+                    <th>{{tutor.A3_Marker}}</th>
+                    <th>{{tutor.A4_Marker}}</th>  
+                    <th>{{tutor.A5_Marker}}</th>  
+                    <th>{{tutor.A6_Marker}}</th>  
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

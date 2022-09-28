@@ -1,16 +1,25 @@
 {% extends 'base.html'%}
+{% load static %}
 
 {% block content %}
-<form class="form" method="POST" enctype="multipart/form-data"> {% csrf_token %}
-    {{form}}
-    <button type="submit">Submit</button>
-</form>
 
-{% if form.errors %}
-<div>
-    {{form.errors.title.as_text}}
+<div class="form-div" 
+style="background-color: #045d79 ;
+ color:aliceblue; 
+ margin: 100px 100px 200px 250px; 
+ padding: 10px;"
+ >
+
+    <form method="POST" enctype="multipart/form-data" style="width:400px ; padding: 10px;" > {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+    
+    {% if form.errors %}
+    <div>
+        {{form.errors.title.as_text}}
+    </div>
+    {% endif %}
+    <button><a href="{% url 'incidents.list' %}"> Cancel</a></button>
 </div>
-{% endif %}
-<button><a href="{% url 'incidents.list' %}"> Cancel</a></button>
-
 {% endblock %}

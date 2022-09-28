@@ -8,42 +8,117 @@
     <body>
 
         <!--Nav Bar-->
-        <nav>
+        <nav style="background-image: linear-gradient(266deg, rgba(47,64,80,1) 0%, rgba(47,64,80,1) 25%, rgba(7,39,107,1) 100%);">
             <!--Logo-->
             <div class="logo">
-                <h3>Logo</h3>
+                <img src="{% static "styles/icon2.png" %}" width="60" >
             </div>
 
-            <!--Nav Bar-->
             {% if user.is_authenticated %}
-            <li class="logout">
-                <a href = "{% url 'logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li class="login">
-                <a href = "{% url 'login' %}">Login</a>
-            </li>
-            {% endif %}
+            <form action="{% url 'search' %}" style="margin-top: 12px;">
+                <input type="text" placeholder="Search by keyword..." name="search" style="height: 40px ;
+                width: 300px">
+                <button type="submit">Search</i></button>
+            </form>
+
+            <!--Nav Bar-->
+
+            <style>
+                .profile:hover {
+                    cursor: pointer;
+                    background-color: #045d79;
+                }
+
+                .profile_Login{
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .profile_div{
+                    display: flex;
+                    justify-content: space-around;
+                    height: 35px;
+                    padding: 10px;
+                }
+
+                .logout{
+                    margin-top: 15px;
+                    padding: 10px
+                }
+            </style>
+
+
+            <div class="profile_Login">
+                <div class="profile_div">
+                    <img src="{% static "styles/profile.png" %}"  class="profile" width="30"> 
+                    <p>{{user}}</p>
+                </div>
+
+                <li class="logout">
+                    <a href = "{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="login">
+                    <a href = "{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+            </div>
+
+
         </nav>
 
+        {% if user.is_authenticated %}
         <div class="wrapper">
             <!--Sidebar-->
-            <div class="sidebar">
+            <div class="sidebar" style="background-image: linear-gradient(9deg, rgba(47,64,80,1) 0%, rgba(47,64,80,1) 51%, rgba(7,39,107,1) 100%);">
                 <aside>
+                    {% if user.is_superuser %}
                     <div>
                         <a href="{% url 'home' %}">Home</a>
                     </div>
                     <div>
                         <a href="{% url 'incidents.list' %}">View Requests</a>
                     </div>
+
+                    <div>
+                        <a href=" {% url 'results' %}">Risk Analysis</a>
+                    </div>
+
+                    <div>
+                        <a href=" {% url 'upload' %} ">Upload Student Results</a>
+                    </div>
+
+                    <div>
+                        <a href="{% url 'summary.list' %}">Summary Email</a>
+                    </div>
+
+                    <div>
+                        <a href="{%url 'Tutor_List' %}">Tutor Marking list</a>
+                    </div>
+
+                    <div>
+                        <a href="{%url 'uploads' %}">Tutor Marking Upload</a>
+                    </div>
+
+                    <!--Not See-->
+                    {% else %}
+                    <div>
+                        <a href="{% url 'home' %}">Home</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'incidents.list' %}">View Requests</a>
+                    </div>
+
                     <div>
                         <a href="{% url 'incidents.new' %}">Create New Request</a>
-                    </div>
-                    <div>
-                        <a>Risk Analysis</a>
-                    </div>
+                    </div> <!--New Form here?-->
+
+                    {% endif %}
                 </aside>
             </div>
+            {% else %}
+
+            {% endif %}
 
             <!--Block Content-->
             <div class="content">

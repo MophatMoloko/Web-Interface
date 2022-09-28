@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +43,9 @@ INSTALLED_APPS = [
     #apps
     'home',
     'incidents',
+    'Tutor_Marking',
+    'import_export',
+    'studentResults',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +64,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'static/templates',
+            BASE_DIR / 'static/templates', 'Tutor_Marking/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -140,3 +144,18 @@ MEDIA_URL = '/media/'
 
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# EmailProject/settings.py
+# This should be at the start of the file
+
+env = environ.Env()
+environ.Env.read_env()
+
+#Email Tools
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'mophatmoloko@gmail.com'
+EMAIL_HOST_PASSWORD = 'ldjjdkppnhxckqsb'
+RECIPIENT_ADDRESS = 'mophatmoloko@gmail.com'

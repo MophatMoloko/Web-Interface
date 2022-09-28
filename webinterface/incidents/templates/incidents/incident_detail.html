@@ -8,12 +8,18 @@
             <h1>{{incident.title}}</h1>
             <p>{{incident.text}}</p>
             <h3>File attachment: <p>{{incident.upload}}</p></h3>
+            <h4>Type of Query: <p>{{incident.query_type}}</p></h4>
         </div>
         <div>
-            <button><a href="" download>Click to view</a></button>
-            <button><a href="{% url 'incidents.update' pk=incident.id %}">Edit</a></button>
+
+            {% if user.is_superuser %}
+            <button><a href="{% url 'incidents.update' pk=incident.id %}">View</a></button>
             <button><a href="{% url 'incidents.delete' pk=incident.id %}">Delete</a></button>
             <Button><a href="{% url 'incidents.list' %}">Back</a></Button> 
+            {%else%}
+            <button><a href="{% url 'incidents.delete' pk=incident.id %}">Delete</a></button>
+            <Button><a href="{% url 'incidents.list' %}">Back</a></Button> 
+            {% endif %}
         </div>
     </div>
 </div>

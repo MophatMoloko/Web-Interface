@@ -1,0 +1,71 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<div class="main-list">
+    <h1>
+        Summary of all requests logged:
+    </h1>
+
+    <div class="summary">
+      <form action="{% url 'email' %}" method="post">
+        {% csrf_token %} {{ form }}
+       <table>
+          <tr>
+            <td>
+              TO EMAIL:
+            </td>
+            <td>
+              <input type="email" name="toemail">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="submit" value="send">
+            </td>
+            <td>
+              <input type="reset" value="Clear">
+            </td>
+          </tr>
+       </table>
+      </form>
+    </div>
+
+    <div class="list-content">
+            <div>
+                <table 
+                style="overflow-y:scroll;
+                height:200px;
+                display:block;
+                border-collapse: collapse;
+                width: 800px;
+                text-align: center;">
+                <tr style="position: sticky;
+                    position: -webkit-sticky;
+                    top: 0px;
+                    z-index: 2;
+                    background-color: #293846;
+                    color: white;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: small;
+                    border-style: solid;">
+                    <th style="border-style: solid; width: 30%;">Title</th>
+                    <th style="border-style: solid; width: 30%">Contents</th>
+                    <th style="border-style: solid; width: 25%">Type</th>
+                    <th style="border-style: solid; width: 30%">Date</th>
+
+                </tr>
+                {% for incident in incidents%}
+                <tr>
+                    <th style="border-bottom: solid;"><a style="text-decoration: none;" href="{% url 'incidents.detail' pk=incident.id %}">{{incident.title}}</a></th>
+                    <th style="border-bottom: solid;">{{incident.text|truncatechars:20}}</th>
+                    <th style="border-bottom: solid;">{{incident.query_type}}</th>
+                    <th style="border-bottom: solid;">{{incident.created}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+            </div>
+    </div>
+</div>
+
+{% endblock %}
